@@ -4,7 +4,115 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>WeatherApp</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We"
+      crossorigin="anonymous"
+    />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Caveat&family=Gochi+Hand&family=Rock+Salt&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Architects+Daughter&family=Caveat&family=Gochi+Hand&family=Rock+Salt&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="Weather App Project/style.css" />
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
   </head>
-  <body></body>
+  <body>
+    <div class="container">
+      <h1>What's the weather like? 🤔</h1>
+      <form id="search-location-form">
+        <div class="row form">
+          <div class="col-4">
+            <input
+              type="text"
+              class="form-control"
+              id="location-input"
+              placeholder="Location"
+            />
+          </div>
+          <div class="col-1">
+            <input type="submit" class="btn btn-primary mb-2" value="Submit" />
+          </div>
+        </div>
+      </form>
+      <button id="current-location-button">Current location</button>
+      <div class="location">
+        <span id="city">Rome, Italy </span>
+        <span class="day-time" id="day-time">Sat, 15:30</span>
+      </div>
+      <div class="weather-icon temperature">
+        <img src="Weather App Project/images/sun.png" alt="" width="300px" />
+        <span class="temperature" id="temperature">26</span
+        ><span class="temperature" id="unit">°C</span>
+      </div>
+      <div class="row other-parameters">
+        <div class="col-4">pressure</div>
+        <div class="col-4">wind</div>
+        <div class="col-4">humidity</div>
+      </div>
+      <div class="row parameters-values">
+        <div class="col-4"><span id="current-pressure">0</span> hPa</div>
+        <div class="col-4"><span id="current-wind-speed">4</span> km/h</div>
+        <div class="col-4"><span id="current-humidity">20</span> %</div>
+      </div>
+
+      <hr />
+      <div class="row next-days">
+        <div class="col-3">Tomorrow</div>
+        <div class="col-3">Thursday</div>
+        <div class="col-3">Friday</div>
+        <div class="col-3">Saturday</div>
+      </div>
+
+      <div class="row icon-next-days">
+        <div class="col-3">
+          <img
+            src="Weather App Project/images/sunbehindclouds3.png"
+            alt=""
+            width="150px"
+          />
+        </div>
+        <div class="col-3 cloud">
+          <img
+            src="Weather App Project/images/cloud.png"
+            alt=""
+            width="150px"
+          />
+        </div>
+        <div class="col-3 sunandrain">
+          <img
+            src="Weather App Project/images/sunandrain.png"
+            alt=""
+            width="100px"
+          />
+        </div>
+        <div class="col-3">
+          <img src="Weather App Project/images/sun.png" alt="" width="150px" />
+        </div>
+      </div>
+      <div class="row temperatures-next-days">
+        <div class="col-3">15°C | 23°C</div>
+        <div class="col-3">12°C | 20°C</div>
+        <div class="col-3">14°C | 22°C</div>
+        <div class="col-3">16°C | 25°C</div>
+      </div>
+      <br />
+      <div class="inline-center">
+        <button id="convert-to-°F-button">Convert to °F</button>
+        <button id="convert-to-°C-button">Convert to °C</button>
+      </div>
+    </div>
+    <script src="Weather App Project/js.js"></script>
+    ;
+  </body>
 </html>
