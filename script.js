@@ -20,17 +20,19 @@ dayTime.innerHTML = formatDate(now);
 
 function showCurrentData(response) {
   console.log(response);
-  let city = document.querySelector("#city");
-  city.innerHTML = response.data.name;
-  let currentTemp = document.querySelector("#temperature");
-  currentTemp.innerHTML = Math.round(response.data.main.temp);
-  let currentPressure = document.querySelector("#current-pressure");
-  currentPressure.innerHTML = Math.round(response.data.main.pressure);
-  let currentWindSpeed = document.querySelector("#current-wind-speed");
+  document.querySelector("#city").innerHTML = response.data.name;
+  document.querySelector("#temperature").innerHTML = Math.round(
+    response.data.main.temp
+  );
+  document.querySelector("#current-pressure").innerHTML = Math.round(
+    response.data.main.pressure
+  );
   let windSpeed = response.data.wind.speed;
-  currentWindSpeed.innerHTML = Math.round(windSpeed * 3.6);
-  let currentHumidity = document.querySelector("#current-humidity");
-  currentHumidity.innerHTML = response.data.main.humidity;
+  document.querySelector("#current-wind-speed").innerHTML = Math.round(
+    windSpeed * 3.6
+  );
+  document.querySelector("#current-humidity").innerHTML =
+    response.data.main.humidity;
 }
 
 function search(event) {
