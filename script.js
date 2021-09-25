@@ -1,5 +1,6 @@
 //Date and time
-function formatDate(date) {
+function formatDate(timestamp) {
+  let date = new Date(timestamp);
   let days = ["Sun", "Mon", "Tue", "Wed", "Thr", "Fri", "Sat"];
   let day = days[date.getDay()];
   let hours = date.getHours();
@@ -12,9 +13,6 @@ function formatDate(date) {
   }
   return `${day}, ${hours}:${minutes}`;
 }
-let dayTime = document.querySelector("#day-time");
-let now = new Date();
-dayTime.innerHTML = formatDate(now);
 
 //Search function
 
@@ -35,6 +33,15 @@ function showCurrentData(response) {
   );
   document.querySelector("#current-humidity").innerHTML =
     response.data.main.humidity;
+  document.querySelector("#day-time").innerHTML = formatDate(
+    response.data.dt * 1000
+  );
+  document
+    .querySelector("#icon")
+    .setAttribute(
+      "src",
+      `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
+    );
 }
 
 function search(cityValue) {
