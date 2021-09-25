@@ -19,9 +19,8 @@ function formatDate(timestamp) {
 function showCurrentData(response) {
   console.log(response);
   document.querySelector("#city").innerHTML = response.data.name;
-  document.querySelector("#temperature").innerHTML = Math.round(
-    response.data.main.temp
-  );
+  celsiusTemp = response.data.main.temp;
+  document.querySelector("#temperature").innerHTML = Math.round(celsiusTemp);
   document.querySelector("#description").innerHTML =
     response.data.weather[0].main;
   document.querySelector("#current-pressure").innerHTML = Math.round(
@@ -82,13 +81,9 @@ currentLocationButton.addEventListener("click", searchCurrentLocationData);
 
 function convertTempToF(event) {
   event.preventDefault();
-
-  let temperatureElement = document.querySelector("#temperature");
-  let temperature = temperatureElement.innerHTML;
-  let temperatureInF = (temperature * 9) / 5 + 32;
-  temperatureElement.innerHTML = Math.round(temperatureInF);
-  let unit = document.querySelector("#unit");
-  unit.innerHTML = "°F";
+  let temperatureInF = (celsiusTemp * 9) / 5 + 32;
+  document.querySelector("#temperature").innerHTML = Math.round(temperatureInF);
+  document.querySelector("#unit").innerHTML = "°F";
 }
 
 let convertButtonF = document.querySelector("#convert-to-°F-button");
@@ -96,15 +91,13 @@ convertButtonF.addEventListener("click", convertTempToF);
 
 function convertTempToC(event) {
   event.preventDefault();
-  let temperatureElement = document.querySelector("#temperature");
-  let temperature = temperatureElement.innerHTML;
-  let temperatureInC = ((temperature - 32) * 5) / 9;
-  temperatureElement.innerHTML = Math.round(temperatureInC);
-  let unit = document.querySelector("#unit");
-  unit.innerHTML = `°C`;
+  document.querySelector("#temperature").innerHTML = Math.round(celsiusTemp);
+  document.querySelector("#unit").innerHTML = `°C`;
 }
 
 let convertButtonC = document.querySelector("#convert-to-°C-button");
 convertButtonC.addEventListener("click", convertTempToC);
+
+let celsiusTemp = null;
 
 search("Hamburg");
