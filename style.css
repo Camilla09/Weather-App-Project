@@ -1,8 +1,9 @@
 body {
-  margin: 40px 150px;
+  margin: 40px;
   font-family: "Architects Daughter", cursive;
 }
 .container {
+  max-width: 1000px;
   border-radius: 20px;
   padding: 30px 60px;
   background: radial-gradient(
