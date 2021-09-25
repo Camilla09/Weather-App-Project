@@ -114,3 +114,9 @@ button:hover {
 .inline-center {
   text-align: center;
 }
+
+.footer {
+  display: block;
+  margin: 0 auto;
+  text-align: center;
+}
