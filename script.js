@@ -35,17 +35,20 @@ function showCurrentData(response) {
     response.data.main.humidity;
 }
 
-function search(event) {
-  event.preventDefault();
-  let locationInput = document.querySelector("#location-input");
-  let cityValue = `${locationInput.value}`;
+function search(cityValue) {
   let apiKey = "749f35553db8c3cd2efeb65b0321e00d";
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${cityValue}&appid=${apiKey}&units=metric`;
   axios.get(`${apiUrl}`).then(showCurrentData);
 }
 
+function handleSubmit(event) {
+  event.preventDefault();
+  let cityValue = document.querySelector("#location-input").value;
+  search(cityValue);
+}
+
 let searchLocationForm = document.querySelector("#search-location-form");
-searchLocationForm.addEventListener("submit", search);
+searchLocationForm.addEventListener("submit", handleSubmit);
 
 //Current Location Search
 function searchCurrentLocationData(event) {
@@ -91,3 +94,5 @@ function convertTempToC(event) {
 
 let convertButtonC = document.querySelector("#convert-to-°C-button");
 convertButtonC.addEventListener("click", convertTempToC);
+
+search("Hamburg");
