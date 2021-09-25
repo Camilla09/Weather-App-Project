@@ -54,9 +54,16 @@ div.weather-icon {
   margin-left: 120px;
 }
 span.temperature {
+  position: relative;
   text-align: center;
   font-size: 80px;
   color: rgb(107, 107, 255);
+}
+.temperature div {
+  font-size: 31px;
+  position: absolute;
+  top: 95px;
+  left: -91px;
 }
 hr {
   border: 1px solid rgb(107, 107, 255);
