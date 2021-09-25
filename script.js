@@ -1,4 +1,3 @@
-//Date and time
 function formatDate(timestamp) {
   let date = new Date(timestamp);
   let days = ["Sun", "Mon", "Tue", "Wed", "Thr", "Fri", "Sat"];
@@ -13,8 +12,6 @@ function formatDate(timestamp) {
   }
   return `${day}, ${hours}:${minutes}`;
 }
-
-//Search function
 
 function showCurrentData(response) {
   console.log(response);
@@ -58,10 +55,6 @@ function handleSubmit(event) {
   search(cityValue);
 }
 
-let searchLocationForm = document.querySelector("#search-location-form");
-searchLocationForm.addEventListener("submit", handleSubmit);
-
-//Current Location Search
 function searchCurrentLocationData(event) {
   event.preventDefault();
   function showPosition(position) {
@@ -74,11 +67,6 @@ function searchCurrentLocationData(event) {
   navigator.geolocation.getCurrentPosition(showPosition);
 }
 
-let currentLocationButton = document.querySelector("#current-location-button");
-currentLocationButton.addEventListener("click", searchCurrentLocationData);
-
-//Convert to °F/°C
-
 function convertTempToF(event) {
   event.preventDefault();
   let temperatureInF = (celsiusTemp * 9) / 5 + 32;
@@ -86,14 +74,20 @@ function convertTempToF(event) {
   document.querySelector("#unit").innerHTML = "°F";
 }
 
-let convertButtonF = document.querySelector("#convert-to-°F-button");
-convertButtonF.addEventListener("click", convertTempToF);
-
 function convertTempToC(event) {
   event.preventDefault();
   document.querySelector("#temperature").innerHTML = Math.round(celsiusTemp);
   document.querySelector("#unit").innerHTML = `°C`;
 }
+
+let searchLocationForm = document.querySelector("#search-location-form");
+searchLocationForm.addEventListener("submit", handleSubmit);
+
+let currentLocationButton = document.querySelector("#current-location-button");
+currentLocationButton.addEventListener("click", searchCurrentLocationData);
+
+let convertButtonF = document.querySelector("#convert-to-°F-button");
+convertButtonF.addEventListener("click", convertTempToF);
 
 let convertButtonC = document.querySelector("#convert-to-°C-button");
 convertButtonC.addEventListener("click", convertTempToC);
