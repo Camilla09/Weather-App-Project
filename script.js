@@ -13,13 +13,16 @@ function formatDate(timestamp) {
   return `${day}, ${hours}:${minutes}`;
 }
 
-function displayForecast() {
+function displayForecast(response) {
+  console.log(response.data.daily);
   let forecastElement = document.querySelector("#forecast");
   let forecastHTML = `<div class="row next-days">`;
-  forecastHTML =
-    forecastHTML +
-    `<div class="col-3">
-          <div class="forecast-day">Tomorrow</div>
+  let days = ["Tomorrow", "Tuesday", "Wednesday", "Thursday"];
+  days.forEach(function (day) {
+    forecastHTML =
+      forecastHTML +
+      `<div class="col-3">
+          <div class="forecast-day">${day}</div>
             <img
               src="images/sunbehindclouds3.png"
               alt="SunBehindClouds"
@@ -30,9 +33,19 @@ function displayForecast() {
             <span class="max-temp">23°C</span>
           </div>
         </div>`;
+  });
+
   forecastHTML = forecastHTML + `</div>`;
+
   forecastElement.innerHTML = forecastHTML;
 }
+
+function getForecast(coordinates) {
+  let apiKey = "749f35553db8c3cd2efeb65b0321e00d";
+  let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&exclude={part}&appid=${apiKey}`;
+  axios.get(`${apiUrl}`).then(displayForecast);
+}
+
 function showCurrentData(response) {
   console.log(response);
   document.querySelector("#city").innerHTML = response.data.name;
@@ -61,6 +74,8 @@ function showCurrentData(response) {
   document
     .querySelector("#icon")
     .setAttribute("alt", response.data.weather[0].main);
+
+  getForecast(response.data.coord);
 }
 
 function search(cityValue) {
@@ -114,5 +129,4 @@ convertButtonC.addEventListener("click", convertTempToC);
 
 let celsiusTemp = null;
 
-displayForecast();
 search("Hamburg");
