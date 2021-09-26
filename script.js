@@ -13,6 +13,26 @@ function formatDate(timestamp) {
   return `${day}, ${hours}:${minutes}`;
 }
 
+function displayForecast() {
+  let forecastElement = document.querySelector("#forecast");
+  let forecastHTML = `<div class="row next-days">`;
+  forecastHTML =
+    forecastHTML +
+    `<div class="col-3">
+          <div class="forecast-day">Tomorrow</div>
+            <img
+              src="images/sunbehindclouds3.png"
+              alt="SunBehindClouds"
+              width="150px"
+            />
+        <div class="temperatures-next-days">
+            <span class="min-temp">15°C</span> |
+            <span class="max-temp">23°C</span>
+          </div>
+        </div>`;
+  forecastHTML = forecastHTML + `</div>`;
+  forecastElement.innerHTML = forecastHTML;
+}
 function showCurrentData(response) {
   console.log(response);
   document.querySelector("#city").innerHTML = response.data.name;
@@ -94,4 +114,5 @@ convertButtonC.addEventListener("click", convertTempToC);
 
 let celsiusTemp = null;
 
+displayForecast();
 search("Hamburg");
