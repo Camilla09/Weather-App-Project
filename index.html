@@ -29,61 +29,67 @@
   </head>
   <body>
     <div class="container">
-      <h1>What's the weather like? 🤔</h1>
-      <form id="search-location-form">
-        <div class="row form">
-          <div class="col-4">
-            <input
-              type="text"
-              class="form-control"
-              id="location-input"
-              placeholder="Location"
-              autocomplete="off"
-            />
+      <div class="WeatherApp-wrapper">
+        <h1>What's the weather like? 🤔</h1>
+        <form id="search-location-form">
+          <div class="row form">
+            <div class="col-4">
+              <input
+                type="text"
+                class="form-control"
+                id="location-input"
+                placeholder="Location"
+                autocomplete="off"
+              />
+            </div>
+            <div class="col-1">
+              <input
+                type="submit"
+                class="btn btn-primary mb-2"
+                value="Submit"
+              />
+            </div>
           </div>
-          <div class="col-1">
-            <input type="submit" class="btn btn-primary mb-2" value="Submit" />
-          </div>
+          <button class="current-btn" id="current-location-button">
+            Current Location
+          </button>
+        </form>
+
+        <div class="location">
+          <span id="city"></span>
+          <span class="day-time" id="day-time"></span>
         </div>
-        <button class="current-btn" id="current-location-button">
-          Current Location
-        </button>
-      </form>
+        <div class="weather-icon temperature">
+          <img id="icon" src="" alt="" width="300px" />
+          <span class="temperature" id="temperature"></span
+          ><span class="temperature" id="unit">°C </span>
+          <div class="description" id="description"></div>
+        </div>
+        <div class="row other-parameters">
+          <div class="col-4">pressure</div>
+          <div class="col-4">wind</div>
+          <div class="col-4">humidity</div>
+        </div>
+        <div class="row parameters-values">
+          <div class="col-4"><span id="current-pressure">0</span> hPa</div>
+          <div class="col-4"><span id="current-wind-speed">4</span> km/h</div>
+          <div class="col-4"><span id="current-humidity">20</span> %</div>
+        </div>
 
-      <div class="location">
-        <span id="city"></span>
-        <span class="day-time" id="day-time"></span>
-      </div>
-      <div class="weather-icon temperature">
-        <img id="icon" src="" alt="" width="300px" />
-        <span class="temperature" id="temperature"></span
-        ><span class="temperature" id="unit">°C </span>
-        <div class="description" id="description"></div>
-      </div>
-      <div class="row other-parameters">
-        <div class="col-4">pressure</div>
-        <div class="col-4">wind</div>
-        <div class="col-4">humidity</div>
-      </div>
-      <div class="row parameters-values">
-        <div class="col-4"><span id="current-pressure">0</span> hPa</div>
-        <div class="col-4"><span id="current-wind-speed">4</span> km/h</div>
-        <div class="col-4"><span id="current-humidity">20</span> %</div>
-      </div>
+        <hr />
+        <div id="forecast"></div>
+        <br />
 
-      <hr />
-      <div id="forecast"></div>
-      <br />
-
-      <small class="footer">
-        <a
-          href="https://github.com/Camilla09/Weather-App-Project"
-          target="_blank"
+        <small class="footer">
+          <a
+            href="https://github.com/Camilla09/Weather-App-Project"
+            target="_blank"
+          >
+            Open-sourced code</a
+          >
+          by Camilla Simonin</small
         >
-          Open-sourced code</a
-        >
-        by Camilla Simonin</small
-      >
+      </div>
     </div>
     <script src="script.js"></script>
   </body>
