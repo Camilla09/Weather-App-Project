@@ -35,16 +35,14 @@ function displayForecast(response) {
   let forecastHTML = `<div class="row next-days">`;
 
   forecast.forEach(function (forecastDay, index) {
+    let iconCode = forecastDay.weather[0].icon;
     if (index > 0 && index < 5) {
       forecastHTML =
         forecastHTML +
         `<div class="col-3">
           <div class="forecast-day">${formatDay(forecastDay.dt)}</div>
             <img
-              src="http://openweathermap.org/img/wn/${
-                forecastDay.weather[0].icon
-              }@2x.png"
-            
+              src="images/${iconCode}.png"
               width="150px"
             />
         <div class="temperatures-next-days">
@@ -87,12 +85,8 @@ function showCurrentData(response) {
   document.querySelector("#day-time").innerHTML = formatDate(
     response.data.dt * 1000
   );
-  document
-    .querySelector("#icon")
-    .setAttribute(
-      "src",
-      `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
-    );
+  let iconCode = response.data.weather[0].icon;
+  document.querySelector("#icon").setAttribute("src", `images/${iconCode}.png`);
   document
     .querySelector("#icon")
     .setAttribute("alt", response.data.weather[0].main);
