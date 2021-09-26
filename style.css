@@ -64,7 +64,8 @@ span.temperature {
   color: rgb(107, 107, 255);
 }
 
-.temperature div {
+.description {
+  color: rgb(107, 107, 255);
   font-size: 30px;
   position: absolute;
   top: 200px;
