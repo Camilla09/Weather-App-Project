@@ -124,31 +124,10 @@ function searchCurrentLocationData(event) {
   navigator.geolocation.getCurrentPosition(showPosition);
 }
 
-function convertTempToF(event) {
-  event.preventDefault();
-  let temperatureInF = (celsiusTemp * 9) / 5 + 32;
-  document.querySelector("#temperature").innerHTML = Math.round(temperatureInF);
-  document.querySelector("#unit").innerHTML = "°F";
-}
-
-function convertTempToC(event) {
-  event.preventDefault();
-  document.querySelector("#temperature").innerHTML = Math.round(celsiusTemp);
-  document.querySelector("#unit").innerHTML = `°C`;
-}
-
 let searchLocationForm = document.querySelector("#search-location-form");
 searchLocationForm.addEventListener("submit", handleSubmit);
 
 let currentLocationButton = document.querySelector("#current-location-button");
 currentLocationButton.addEventListener("click", searchCurrentLocationData);
-
-let convertButtonF = document.querySelector("#convert-to-°F-button");
-convertButtonF.addEventListener("click", convertTempToF);
-
-let convertButtonC = document.querySelector("#convert-to-°C-button");
-convertButtonC.addEventListener("click", convertTempToC);
-
-let celsiusTemp = null;
 
 search("Hamburg");
